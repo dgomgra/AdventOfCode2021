@@ -1,0 +1,5 @@
+day1:
+    + Leer datos de un fichero.
+    + Recuperar los datos y añadirlos a un array de números.
+day3:
+    + Pasar un número de binario a decimal parseInt(numero, 2)
