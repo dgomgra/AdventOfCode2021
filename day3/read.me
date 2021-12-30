@@ -1,11 +1,11 @@
---- Day 3: Binary Diagnostic ---
-The submarine has been making some odd creaking noises, so you ask it to produce a diagnostic report just in case.
+--- Día 3: Diagnóstico binario ---
+El submarino ha estado haciendo algunos crujidos extraños , así que le pides que produzca un informe de diagnóstico por si acaso.
 
-The diagnostic report (your puzzle input) consists of a list of binary numbers which, when decoded properly, can tell you many useful things about the conditions of the submarine. The first parameter to check is the power consumption.
+El informe de diagnóstico (su entrada del rompecabezas) consiste en una lista de números binarios que, cuando se decodifican correctamente, pueden decirle muchas cosas útiles sobre las condiciones del submarino. El primer parámetro a comprobar es el consumo de energía .
 
-You need to use the binary numbers in the diagnostic report to generate two new binary numbers (called the gamma rate and the epsilon rate). The power consumption can then be found by multiplying the gamma rate by the epsilon rate.
+Debe usar los números binarios en el informe de diagnóstico para generar dos nuevos números binarios (llamados tasa gamma y tasa épsilon ). El consumo de energía se puede calcular multiplicando la tasa gamma por la tasa épsilon.
 
-Each bit in the gamma rate can be determined by finding the most common bit in the corresponding position of all numbers in the diagnostic report. For example, given the following diagnostic report:
+Cada bit de la velocidad gamma se puede determinar encontrando el bit más común en la posición correspondiente de todos los números en el informe de diagnóstico. Por ejemplo, dado el siguiente informe de diagnóstico:
 
 00100
 11110
@@ -19,56 +19,56 @@ Each bit in the gamma rate can be determined by finding the most common bit in t
 11001
 00010
 01010
-Considering only the first bit of each number, there are five 0 bits and seven 1 bits. Since the most common bit is 1, the first bit of the gamma rate is 1.
+Considerando solo el primer bit de cada número, hay cinco 0bits y siete 1bits. Dado que el bit más común es 1, el primer bit de la tasa de gamma es 1.
 
-The most common second bit of the numbers in the diagnostic report is 0, so the second bit of the gamma rate is 0.
+El segundo bit más común de los números en el informe de diagnóstico es 0, por lo que el segundo bit de la tasa de gamma es 0.
 
-The most common value of the third, fourth, and fifth bits are 1, 1, and 0, respectively, and so the final three bits of the gamma rate are 110.
+El valor más común de la tercera, cuarta, y quinta bits son 1, 1, y 0, respectivamente, y por lo que los tres últimos bits de la tasa de gamma son 110.
 
-So, the gamma rate is the binary number 10110, or 22 in decimal.
+Entonces, la tasa gamma es el número binario 10110o 22en decimal.
 
-The epsilon rate is calculated in a similar way; rather than use the most common bit, the least common bit from each position is used. So, the epsilon rate is 01001, or 9 in decimal. Multiplying the gamma rate (22) by the epsilon rate (9) produces the power consumption, 198.
+La tasa de épsilon se calcula de manera similar; en lugar de usar el bit más común, se usa el bit menos común de cada posición. Entonces, la tasa de épsilon es 01001, o 9en decimal. Multiplicando la tasa gamma ( 22) por el tipo epsilon ( 9) produce el consumo de energía, 198.
 
-Use the binary numbers in your diagnostic report to calculate the gamma rate and epsilon rate, then multiply them together. What is the power consumption of the submarine? (Be sure to represent your answer in decimal, not binary.)
+Utilice los números binarios en su informe de diagnóstico para calcular la tasa gamma y la tasa épsilon, luego multiplíquelos. ¿Cuál es el consumo de energía del submarino? (Asegúrese de representar su respuesta en decimal, no en binario).
 
-Your puzzle answer was 4139586.
+Tu respuesta al acertijo fue 4139586.
 
---- Part Two ---
-Next, you should verify the life support rating, which can be determined by multiplying the oxygen generator rating by the CO2 scrubber rating.
+--- La segunda parte ---
+A continuación, debe verificar la clasificación de soporte vital , que se puede determinar multiplicando la clasificación del generador de oxígeno por la clasificación del depurador de CO2 .
 
-Both the oxygen generator rating and the CO2 scrubber rating are values that can be found in your diagnostic report - finding them is the tricky part. Both values are located using a similar process that involves filtering out values until only one remains. Before searching for either rating value, start with the full list of binary numbers from your diagnostic report and consider just the first bit of those numbers. Then:
+Tanto la clasificación del generador de oxígeno como la clasificación del depurador de CO2 son valores que se pueden encontrar en su informe de diagnóstico; encontrarlos es la parte difícil. Ambos valores se ubican mediante un proceso similar que implica filtrar valores hasta que solo queda uno. Antes de buscar cualquiera de los valores de calificación, comience con la lista completa de números binarios de su informe de diagnóstico y considere solo el primer bit de esos números. Entonces:
 
-Keep only numbers selected by the bit criteria for the type of rating value for which you are searching. Discard numbers which do not match the bit criteria.
-If you only have one number left, stop; this is the rating value for which you are searching.
-Otherwise, repeat the process, considering the next bit to the right.
-The bit criteria depends on which type of rating value you want to find:
+Mantenga solo los números seleccionados por los criterios de bit para el tipo de valor de clasificación que está buscando. Descarte los números que no coincidan con los criterios de bits.
+Si solo le queda un número, deténgase; este es el valor de clasificación que está buscando.
+De lo contrario, repita el proceso, considerando el siguiente bit a la derecha.
+Los criterios de bits dependen del tipo de valor de clasificación que desee encontrar:
 
-To find oxygen generator rating, determine the most common value (0 or 1) in the current bit position, and keep only numbers with that bit in that position. If 0 and 1 are equally common, keep values with a 1 in the position being considered.
-To find CO2 scrubber rating, determine the least common value (0 or 1) in the current bit position, and keep only numbers with that bit in that position. If 0 and 1 are equally common, keep values with a 0 in the position being considered.
-For example, to determine the oxygen generator rating value using the same example diagnostic report from above:
+Para encontrar la clasificación del generador de oxígeno , determine el valor más común ( 0o 1) en la posición actual del bit y mantenga solo los números con ese bit en esa posición. Si 0y 1son igualmente comunes, mantenga los valores con a 1en la posición que se está considerando.
+Para encontrar la clasificación del depurador de CO2 , determine el valor mínimo común ( 0o 1) en la posición actual del bit y mantenga solo los números con ese bit en esa posición. Si 0y 1son igualmente comunes, mantenga los valores con a 0en la posición que se está considerando.
+Por ejemplo, para determinar el valor nominal del generador de oxígeno utilizando el mismo informe de diagnóstico de ejemplo anterior:
 
-Start with all 12 numbers and consider only the first bit of each number. There are more 1 bits (7) than 0 bits (5), so keep only the 7 numbers with a 1 in the first position: 11110, 10110, 10111, 10101, 11100, 10000, and 11001.
-Then, consider the second bit of the 7 remaining numbers: there are more 0 bits (4) than 1 bits (3), so keep only the 4 numbers with a 0 in the second position: 10110, 10111, 10101, and 10000.
-In the third position, three of the four numbers have a 1, so keep those three: 10110, 10111, and 10101.
-In the fourth position, two of the three numbers have a 1, so keep those two: 10110 and 10111.
-In the fifth position, there are an equal number of 0 bits and 1 bits (one each). So, to find the oxygen generator rating, keep the number with a 1 in that position: 10111.
-As there is only one number left, stop; the oxygen generator rating is 10111, or 23 in decimal.
-Then, to determine the CO2 scrubber rating value from the same example above:
+Comience con los 12 números y considere solo el primer bit de cada número. Hay más 1bits (7) que 0los bits (5), a fin de mantener sólo los 7 números con una 1en la primera posición: 11110, 10110, 10111, 10101, 11100, 10000, y 11001.
+Luego, consideremos el segundo bit de los 7 números restantes: hay más 0bits (4) que 1los bits (3), a fin de mantener sólo los 4 números con una 0en la segunda posición: 10110, 10111, 10101, y 10000.
+En la tercera posición, tres de los cuatro números tienen una 1, a fin de mantener los tres: 10110, 10111, y 10101.
+En la cuarta posición, dos de los tres números tienen una 1, así que mantén esos dos: 10110y 10111.
+En la quinta posición, hay un número igual de 0bits y 1bits (uno cada uno). Por lo tanto, para encontrar la calificación generador de oxígeno , mantener el número con una 1en esa posición: 10111.
+Como solo queda un número, deténgase; la clasificación del generador de oxígeno es 10111, o 23en decimal.
+Luego, para determinar el valor de clasificación del depurador de CO2 del mismo ejemplo anterior:
 
-Start again with all 12 numbers and consider only the first bit of each number. There are fewer 0 bits (5) than 1 bits (7), so keep only the 5 numbers with a 0 in the first position: 00100, 01111, 00111, 00010, and 01010.
-Then, consider the second bit of the 5 remaining numbers: there are fewer 1 bits (2) than 0 bits (3), so keep only the 2 numbers with a 1 in the second position: 01111 and 01010.
-In the third position, there are an equal number of 0 bits and 1 bits (one each). So, to find the CO2 scrubber rating, keep the number with a 0 in that position: 01010.
-As there is only one number left, stop; the CO2 scrubber rating is 01010, or 10 in decimal.
-Finally, to find the life support rating, multiply the oxygen generator rating (23) by the CO2 scrubber rating (10) to get 230.
+Comience de nuevo con los 12 números y considere solo el primer bit de cada número. Hay menos 0bits (5) que 1los bits (7), a fin de mantener sólo los 5 números con una 0en la primera posición: 00100, 01111, 00111, 00010, y 01010.
+Luego, considere el segundo bit de los 5 números restantes: hay menos 1bits (2) que 0bits (3), así que mantenga solo los 2 números con a 1en la segunda posición: 01111y 01010.
+En la tercera posición, hay un número igual de 0bits y 1bits (uno cada uno). Por lo tanto, para encontrar la calificación depurador de CO2 , mantener el número con una 0en esa posición: 01010.
+Como solo queda un número, deténgase; la clasificación del depurador de CO2 es 01010, o 10en decimal.
+Finalmente, para encontrar la clasificación de soporte vital, multiplique la clasificación del generador de oxígeno ( 23) por la clasificación del depurador de CO2 ( 10) para obtener 230.
 
-Use the binary numbers in your diagnostic report to calculate the oxygen generator rating and CO2 scrubber rating, then multiply them together. What is the life support rating of the submarine? (Be sure to represent your answer in decimal, not binary.)
+Utilice los números binarios en su informe de diagnóstico para calcular la clasificación del generador de oxígeno y la clasificación del depurador de CO2, luego multiplíquelos. ¿Cuál es la clasificación de soporte vital del submarino? (Asegúrese de representar su respuesta en decimal, no en binario).
 
-Your puzzle answer was 1800151.
+Tu respuesta al acertijo fue 1800151.
 
-Both parts of this puzzle are complete! They provide two gold stars: **
+¡Ambas partes de este rompecabezas están completas! Proporcionan dos estrellas doradas: **
 
-At this point, you should return to your Advent calendar and try another puzzle.
+En este punto, debes volver a tu calendario de Adviento y probar con otro acertijo.
 
-If you still want to see it, you can get your puzzle input.
+Si aún desea verlo, puede obtener la entrada de su rompecabezas .
 
-You can also [Share] this puzzle.
+También puede [Compartir] este rompecabezas.
