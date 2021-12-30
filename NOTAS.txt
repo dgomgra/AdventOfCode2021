@@ -1,5 +1,6 @@
 day1:
     + Leer datos de un fichero.
     + Recuperar los datos y añadirlos a un array de números.
+    + Recorremos un array y pasamos la lista y el índice.
 day3:
     + Pasar un número de binario a decimal parseInt(numero, 2)
